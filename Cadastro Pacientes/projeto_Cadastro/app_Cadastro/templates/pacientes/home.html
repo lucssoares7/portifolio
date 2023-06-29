@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body{
+            width: 100%;
+            min-height: 100vh;
+            background: linear-gradient(90deg, #1de2c4 0%, #1a6698 100%);
+            display: flex;
+            justify-content: center;
+            align-itens: center;
+        }
+        
+        .container{
+            background-color: #fafafa;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0);
+            width: 1200px;
+            max-width: 100%;
+            overflow: hidden;
+        }
+        
+        .header{
+            background-color: #eee;
+            padding:20px;
+            text-align: center;
+            font-size: 25px;
+        }
+        
+        .middle{
+            background-color: #66f350;
+            padding:20px;
+            text-align: center;
+            font-size: 20px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .form{
+            padding: 10px;  
+        }
+        
+        .form-control{
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            position: relative;
+        }
+        
+        .form-control-num{
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            position: relative;
+        }
+
+        .form-control-date{
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            position: relative;
+        }
+        
+        
+        .text {
+            display: inline-block; /* Exibe os elementos em uma mesma linha */
+            margin-right: 10px; /* Espaçamento entre os elementos (opcional) */
+        }
+        .number {
+            display: inline-block; /* Exibe os elementos em uma mesma linha */
+            margin-right: 10px; /* Espaçamento entre os elementos (opcional) */
+        }
+        .date{
+            display: inline-block; /* Exibe os elementos em uma mesma linha */
+            margin-right: 10px; /* Espaçamento entre os elementos (opcional) */
+        }
+        
+        .form-control-num label{
+            padding-bottom: 10px;
+            margin-bottom: 5px;
+        }
+        .form-control-date label{
+            padding-bottom: 10px;
+            margin-bottom: 5px;
+        }
+        
+        .form-control-num input {
+          /*  border: 2px solid #f0f0f0;
+            border-radius: 10px;
+            display: inline-block;
+            padding-bottom: 10px;
+            font-size: 14px;
+            vertical-align: middle;
+            width: 100px;*/
+            border: 2px solid #f0f0f0;
+            display: inline-block;
+            border-radius: 10px;
+            font-size: 14px;
+            width: 200px;
+            padding: 10px;
+        }
+        
+        .form-control-date input {
+          /*  border: 2px solid #f0f0f0;
+            border-radius: 10px;
+            display: inline-block;
+            padding-bottom: 10px;
+            font-size: 14px;
+            vertical-align: middle;
+            width: 100px;*/
+            border: 2px solid #f0f0f0;
+            display: inline-block;
+            border-radius: 10px;
+            font-size: 14px;
+            width: 200px;
+            padding: 10px;
+        }
+
+        .form-control label{
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+        
+        .form-control input{
+            border: 2px solid #f0f0f0;
+            display: block;
+            border-radius: 10px;
+            font-size: 14px;
+            width: 100%;
+            padding: 10px;
+        }
+        .form-control i{
+            position: absolute;
+            top: 45px;
+            right: 10px;
+            visibility: hidden;
+        }
+        .form-control-num i{
+            position: absolute;
+            top: 45px;
+            right: 10px;
+            visibility: hidden;
+        }
+        .form-control-date i{
+            position: absolute;
+            top: 45px;
+            right: 10px;
+            visibility: hidden;
+        }
+        
+        .form-control small{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            visibility: hidden;
+        }
+        .form-control-num small{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            visibility: hidden;
+        }
+        
+        .form-control-date small{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            visibility: hidden;
+        }
+        
+        .form button{
+            background-color: #091568;
+            border: 2px solid #ffffff;
+            color: #fff;
+            font-size: 20px;
+            width: 100%;
+            border-radius: 10px;
+            padding: 10px;
+        }
+        
+        .form-control.success input{
+            border-color: green;
+        } 
+        
+        .form-control.success i.fa-check-circle{
+            color: green;
+            visibility: visible;
+        } 
+        
+        .form-control.error input{
+            border-color: red;
+        } 
+        
+        .form-control.error i.fa-exclamation-circle{
+            color: red;
+            visibility: visible;
+        } 
+        
+        .form-control.error small{
+            color: red;
+            visibility: visible;
+        }
+    </style>
+
+    <title>Cadastro de Paciente</title>
+</head>
+<body>
+    
+    <div class = "container">
+        <div class = "header"
+            <h2>Cadastro de Paciente</h2>
+        </div>
+
+        <div class = "middle"
+            <h2>Dados pessoais</h2>
+        </div>
+ 
+        <form action="{% url 'dados_paciente'%}" method="post" id="form" class="form">
+            {% csrf_token %}
+            <div class="form-control">
+                <label for="nome">Nome</label>
+                <input type="text" name="nome" id ="nome" placeholder="Digite o Nome do Paciente"/> 
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small> Mensagem de erro</small>
+            </div>
+            
+            <div class="form-control-date">
+                <label for="datanasc">Data de Nascimento</label>
+                <input type="date" name="datanasc" id ="datanasc" placeholder="Data de Nascimento"/> 
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small> Mensagem de erro</small>
+            </div>
+
+
+            <div class="form-control">
+                <label for="email">E-mail</label>
+                <input type="text" id ="email" placeholder="Digite seu e-mail"/>
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small> Mensagem de erro</small>
+            </div>
+            <div class="form-control-num">
+                <label for="telefone">Telefone</label>
+                <input type="text" id ="telefone" placeholder="Digite o telefone"/>
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small> Mensagem de erro</small>
+            </div>
+
+            <div class = "middle"
+                <h2> Avaliação Clínica</h2>
+            </div>
+
+            <div class="form-control">
+                <label for="antecedentes">Antecedentes pessoais</label>
+                <input type="text" id ="antecedentes"/>
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small> Mensagem de erro</small>
+            </div>
+            <div class="form-control">
+                <label for="patologiasatuais">Patologias Atuais</label>
+                <input type="text" id ="patologiasatuais"/>
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small> Mensagem de erro</small>
+            </div>
+            <div class="form-control">
+                <label for="histpatologias">Histórico Familiar de Patologias</label>
+                <input type="text" id ="histpatologias"/>
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small> Mensagem de erro</small>
+            </div>
+
+            <div class="form-control">
+                <label for="medicamentos">Medicamentos em Uso</label>
+                <input type="text" id ="medicamentos"/>
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small> Mensagem de erro</small>
+            </div>
+            
+            <div class="form-control">
+                <label for="fitchavit">Fitoterápicos, chás e vitaminas em uso</label>
+                <input type="text" id ="fitchavit"/>
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small> Mensagem de erro</small>
+            </div>
+            
+            <div class="form-control">
+                <label for="cirurgias">Cirurgias já realizadas</label>
+                <input type="text" id ="cirurgias"/>
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small> Mensagem de erro</small>
+            </div>
+            <div class="form-control">
+                <label for="fasetratamento">Fase do tratamento oncológico</label>
+                <input type="text" id ="fasetratamento"/>
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small> Mensagem de erro</small>
+            </div>
+
+            <div class = "middle"
+                <h2> Avaliação do estado nutricional/funcionalidade</h2>
+            </div>
+
+            <div class="form-control-num">
+                <label for="pesoatual">Peso Atual</label>
+                <input type="number" id ="pesoatual"/>
+                <label>kg</label>
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small> Mensagem de erro</small>
+            </div>
+            
+            <div class="form-control-num">
+                <label for="peso3meses">Peso há 3 meses</label>
+                <input type="number" id ="peso3meses"/>
+                <label>kg</label>
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small> Mensagem de erro</small>
+            </div>
+
+            <div class="form-control-num">
+                <label for="pesodiagnostico">Peso no diagnóstico</label>
+                <input type="number" id ="pesodiagnostico"/>
+                <label>kg</label>
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small> Mensagem de erro</small>
+            </div>
+            
+            <div class="form-control-num">
+                <label for="altura">Altura</label>
+                <input type="number" id ="altura"/>
+                <label>cm</label>
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small> Mensagem de erro</small>
+            </div>
+
+            <div class="form-control">
+                <label for="altcapfunc">Alterações na capacide Funcional</label>
+                <input type="text" id ="altcapfunc"/>
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small> Mensagem de erro</small>
+            </div>
+
+            <div class="form-control">
+                <label for="atividadefisica">Atividade Física</label>
+                <input type="text" id ="atividadefisica"/>
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small> Mensagem de erro</small>
+            </div>
+
+            <div class = "middle"
+                <h2> Hábitos Sociais</h2>
+            </div>
+
+            <div class="form-control-check">
+                <label for="tabagismo">Tabagismo</label>
+                <input type="checkbox" id="tabagismo" name="tabagismo">
+            </div>
+
+            <div class="form-control-check">
+                <label for="etilismo">Etilismo</label>
+                <input type="checkbox" id="etilismo" name="etilismo">
+            </div>
+
+            <div class="form-control-check">
+                <label for="chimarrao">Chimarrão</label>
+                <input type="checkbox" id="chimarrao" name="chimarrao">
+            </div>
+            
+            <div class = "middle"
+                <h2> Hábitos Alimentares</h2>
+            </div>
+
+            <div class="form-control">
+                <label for="alteralimentar">Alterações na ingestão alimentar</label>
+                <input type="text" id ="alteralimentar"/>
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small> Mensagem de erro</small>
+            </div>
+            <div class="form-control">
+                <label for="consistalimentar">Consistência Alimentar Aceita</label>
+                <input type="text" id ="consistalimentar"/>
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small> Mensagem de erro</small>
+            </div>
+            <div class="form-control">
+                <label for="alergiaintolerancia">Alergias ou Intolerâncias</label>
+                <input type="text" id ="alergiaintolerancia"/>
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small> Mensagem de erro</small>
+            </div>
+            <div class="form-control">
+                <label for="recusas">Recusas ou Alimentos Indigestos</label>
+                <input type="text" id ="recusas"/>
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small> Mensagem de erro</small>
+            </div>
+
+            <div class="form-control">
+                <label for="alimentospreferidos">Alimentos Preferidos</label>
+                <input type="text" id ="alimentospreferidos"/>
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small> Mensagem de erro</small>
+            </div>
+            <div class="form-control">
+                <label for="suplementos">Consumo de suplementos alimentares</label>
+                <input type="text" id ="alteralimentar"/>
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small> Mensagem de erro</small>
+            </div>
+            <div class="form-control-num">
+                <label for="habitointestinal">Hábito intestinal</label>
+                <input type="number" id ="habitointestinal"/>
+                <label>vezes por dia</label>
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small> Mensagem de erro</small>
+            </div>
+            <div class="form-control-num">
+                <label for="habitourinario">Hábito urinário</label>
+                <input type="number" id ="habitourinario"/>
+                <label>vezes por dia</label>
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small> Mensagem de erro</small>
+            </div>
+
+            <div class="form-control-num">
+                <label for="hidratacao">Hidratação</label>
+                <input type="number" id ="hidratacao"/>
+                <label>ml por dia</label>
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small> Mensagem de erro</small>
+            </div>
+            
+            <div class = "middle"
+                <h2> Sintomas e principais queixas</h2>
+            </div>
+
+            <div class="form-control">
+                <label for="efeitoscol">Efeitos colaterais do tratamento</label>
+                <input type="text" id ="efeitoscol"/>
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small> Mensagem de erro</small>
+            </div>
+            
+            <div class="form-control">
+                <label for="recordatorio24h">Recordatório 24 horas</label>
+                <input type="text" id ="recordatorio24h"/>
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small> Mensagem de erro</small>
+            </div>
+
+            <div class="form-control">
+                <label for="condutanutri">Conduta Nutricional Inicial</label>
+                <input type="text" id ="condutanutri"/>
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small> Mensagem de erro</small>
+            </div>
+
+            <button type = "submit"> Cadastrar Paciente</button>
+        </form>
+    
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</body>
+</html>

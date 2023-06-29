@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous" />
+
+    <title>Listagem de pacientes</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        width: 100%;
+        min-height: 100vh;
+        background: linear-gradient(90deg, #1de2c4 0%, #1a6698 100%);
+        display: flex;
+        justify-content: center;
+        align-itens: center;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      .container {
+        background-color: #fafafa;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0);
+        width: 1200px;
+        max-width: 100%;
+        overflow: hidden;
+        display: flex;
+        overflow-x: auto;
+        flex-direction: column;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <table class="table table-bordered table-striped">
+        <tr>
+          <th>id</th>
+          <th>Nome</th>
+          <th>Idade</th>
+          <th>Antecedentes Pessoais</th>
+          <th>Patologias Atuais</th>
+          <th>Histórico Familiar de Patologias</th>
+          <th>Antecedentes Pessoais</th>
+          <th>Patologias Atuais</th>
+          <th>Histórico Familiar de Patologias</th>
+        </tr>
+        {%for paciente in pacientes%}
+        <tr>
+          <td>{{paciente.id_paciente}}</td>
+          <td>{{paciente.nome}}</td>
+          <td>{{paciente.idade}}</td>
+        </tr>
+        {%endfor%}
+      </table>
+    </div>
+  </body>
+</html>

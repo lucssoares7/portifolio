@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        width: 100%;
+        min-height: 100vh;
+        background: linear-gradient(90deg, #5aef62 0%, #16d120 100%);
+        display: flex;
+        justify-content: center;
+        align-itens: center;
+      }
+
+      .container {
+        background-color: #fafafa;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0);
+        width: 1200px;
+        max-width: 100%;
+        overflow: hidden;
+      }
+
+      .header {
+        background-color: #eee;
+        padding: 20px;
+      }
+
+      .middle {
+        background-color: #66f350;
+        padding: 20px;
+        text-align: center;
+        font-size: 16px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+      }
+
+      .form {
+        padding: 10px;
+      }
+
+      .form-control {
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        position: relative;
+      }
+
+      .form-control-num {
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        position: relative;
+      }
+
+      .text {
+        display: inline-block; /* Exibe os elementos em uma mesma linha */
+        margin-right: 10px; /* Espaçamento entre os elementos (opcional) */
+      }
+      .number {
+        display: inline-block; /* Exibe os elementos em uma mesma linha */
+        margin-right: 10px; /* Espaçamento entre os elementos (opcional) */
+      }
+
+      .form-control-num label {
+        padding-bottom: 10px;
+        margin-bottom: 5px;
+      }
+
+      .form-control-num input {
+        /*  border: 2px solid #f0f0f0;
+            border-radius: 10px;
+            display: inline-block;
+            padding-bottom: 10px;
+            font-size: 14px;
+            vertical-align: middle;
+            width: 100px;*/
+        border: 2px solid #f0f0f0;
+        display: inline-block;
+        border-radius: 10px;
+        font-size: 14px;
+        width: 200px;
+        padding: 10px;
+      }
+      .form-control label {
+        display: inline-block;
+        margin-bottom: 5px;
+      }
+
+      .form-control input {
+        border: 2px solid #f0f0f0;
+        display: block;
+        border-radius: 10px;
+        font-size: 14px;
+        width: 100%;
+        padding: 10px;
+      }
+      .form-control i {
+        position: absolute;
+        top: 45px;
+        right: 10px;
+        visibility: hidden;
+      }
+      .form-control-num i {
+        position: absolute;
+        top: 45px;
+        right: 10px;
+        visibility: hidden;
+      }
+
+      .form-control small {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        visibility: hidden;
+      }
+      .form-control-num small {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        visibility: hidden;
+      }
+
+      .form button {
+        background-color: #fc00ff;
+        border: 2px solid #fc00ff;
+        color: #fff;
+        font-size: 14px;
+        width: 100%;
+        border-radius: 10px;
+        padding: 10px;
+      }
+
+      .form-control.success input {
+        border-color: green;
+      }
+
+      .form-control.success i.fa-check-circle {
+        color: green;
+        visibility: visible;
+      }
+
+      .form-control.error input {
+        border-color: red;
+      }
+
+      .form-control.error i.fa-exclamation-circle {
+        color: red;
+        visibility: visible;
+      }
+
+      .form-control.error small {
+        color: red;
+        visibility: visible;
+      }
+    </style>
+  </head>
+  <body>
+    {% block content %}
+    {% endblock %}
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"></script>
+  </body>
+</html>
